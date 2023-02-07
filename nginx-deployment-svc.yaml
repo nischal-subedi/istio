@@ -1,18 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: "2023-02-07T06:18:01Z"
   generation: 1
   labels:
     app: nginx
   name: nginx
   namespace: default
-  resourceVersion: "21522"
-  uid: bc90288c-2e66-4122-a027-e403629a5442
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: nginx
@@ -23,7 +18,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: nginx
     spec:
@@ -31,25 +25,16 @@ spec:
       - image: nginx
         imagePullPolicy: Always
         name: nginx
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: "2023-02-07T06:18:34Z"
   labels:
     app: nginx
   name: nginx
   namespace: default
-  resourceVersion: "21657"
-  uid: 68a95b74-c973-4a68-b786-9347f94ca25f
 spec:
   clusterIP: 10.100.5.137
   clusterIPs:
